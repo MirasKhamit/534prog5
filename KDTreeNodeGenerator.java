@@ -10,6 +10,8 @@ public class KDTreeNodeGenerator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Enter the filename: ");// File to save the nodes
+        String fileName = scanner.nextLine();
         // Get user inputs for K and N
         System.out.print("Enter the number of dimensions (K): ");
         int K = scanner.nextInt();
@@ -37,20 +39,19 @@ public class KDTreeNodeGenerator {
             }
         }
 
-        // File to save the nodes
-        String fileName = "kdtree_nodes1.txt";
 
         HashSet<String> nodes = new HashSet<String>();
         Random random = new Random();
 
         // Generate N nodes
         for (int i = 0; i < N; i++) {
-            StringBuilder node = new StringBuilder("");//(");
+            StringBuilder node = new StringBuilder("");
             for (int j = 0; j < K; j++) {
                 if (dimensionTypes[j].equals("integer")) {
-                    node.append(random.nextInt(1000)); // Random integer between 0 and 99
+                    node.append(random.nextInt(1000)); // Random integer between 0 and 999
                 } else {
-                    node.append(random.nextDouble() * 1000); // Random double between 0.0 and 99.9
+                    double randomValue = random.nextDouble() * 1000;
+                    node.append(String.format("%.3f", randomValue)); // Random double between 0.0 and 999.9
                 }
                 if (j < K - 1) {
                     node.append(", ");
