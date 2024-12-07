@@ -1,0 +1,227 @@
+[mirask@cssmpi24h all]$ mapreduce_run.sh 
+Deleted hdfs://cssmpi24h.uwb.edu:28000/user/mirask/output
+Note: KDTree.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+added manifest
+adding: KDTreeRangeSearchMapReduce.class(in = 2487) (out= 1273)(deflated 48%)
+adding: KDTreeRangeSearchMapReduce$KDTreeRangeSearchMapper.class(in = 2492) (out= 972)(deflated 60%)
+adding: KDTreeRangeSearchMapReduce$KDTreeRangeSearchReducer.class(in = 3094) (out= 1313)(deflated 57%)
+adding: KDTree.class(in = 2030) (out= 1140)(deflated 43%)
+adding: KDTree$DimensionalComparator.class(in = 819) (out= 482)(deflated 41%)
+adding: KDTreeRangeSearchSeq.class(in = 3065) (out= 1774)(deflated 42%)
+adding: KDTreeRangeSearchSpark.class(in = 5322) (out= 2692)(deflated 49%)
+adding: PointKD.class(in = 1458) (out= 780)(deflated 46%)
+24/12/07 02:10:05 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+24/12/07 02:10:05 INFO input.FileInputFormat: Total input paths to process : 1
+24/12/07 02:10:05 INFO mapred.JobClient: Running job: job_202412070156_0007
+24/12/07 02:10:06 INFO mapred.JobClient:  map 0% reduce 0%
+24/12/07 02:10:15 INFO mapred.JobClient:  map 100% reduce 0%
+24/12/07 02:10:27 INFO mapred.JobClient:  map 100% reduce 100%
+24/12/07 02:10:29 INFO mapred.JobClient: Job complete: job_202412070156_0007
+24/12/07 02:10:29 INFO mapred.JobClient: Counters: 17
+24/12/07 02:10:29 INFO mapred.JobClient:   Map-Reduce Framework
+24/12/07 02:10:29 INFO mapred.JobClient:     Combine output records=0
+24/12/07 02:10:29 INFO mapred.JobClient:     Spilled Records=200
+24/12/07 02:10:29 INFO mapred.JobClient:     Reduce input records=100
+24/12/07 02:10:29 INFO mapred.JobClient:     Reduce output records=9
+24/12/07 02:10:29 INFO mapred.JobClient:     Map input records=100
+24/12/07 02:10:29 INFO mapred.JobClient:     Map output records=100
+24/12/07 02:10:29 INFO mapred.JobClient:     Map output bytes=1282
+24/12/07 02:10:29 INFO mapred.JobClient:     Reduce shuffle bytes=0
+24/12/07 02:10:29 INFO mapred.JobClient:     Combine input records=0
+24/12/07 02:10:29 INFO mapred.JobClient:     Reduce input groups=1
+24/12/07 02:10:29 INFO mapred.JobClient:   FileSystemCounters
+24/12/07 02:10:29 INFO mapred.JobClient:     HDFS_BYTES_READ=682
+24/12/07 02:10:29 INFO mapred.JobClient:     FILE_BYTES_WRITTEN=3008
+24/12/07 02:10:29 INFO mapred.JobClient:     FILE_BYTES_READ=1488
+24/12/07 02:10:29 INFO mapred.JobClient:     HDFS_BYTES_WRITTEN=126
+24/12/07 02:10:29 INFO mapred.JobClient:   Job Counters 
+24/12/07 02:10:29 INFO mapred.JobClient:     Launched map tasks=1
+24/12/07 02:10:29 INFO mapred.JobClient:     Launched reduce tasks=1
+24/12/07 02:10:29 INFO mapred.JobClient:     Data-local map tasks=1
+Final Project : Execution time: 25.007 seconds
+[mirask@cssmpi24h all]$ ~/hadoop-0.20.2/bin/hadoop fs~/hadoop-0.20.2/bin/hadoop fs -rmr /user/mirask/input
+Error: Could not find or load main class fs~.hadoop-0.20.2.bin.hadoop
+Caused by: java.lang.ClassNotFoundException: fs~.hadoop-0.20.2.bin.hadoop
+[mirask@cssmpi24h all]$ ~/hadoop-0.20.2/bin/hadoop fs~/hadoop-0.20.2/bin/hadoop fs -rmr /user/mirask/input/ 
+Error: Could not find or load main class fs~.hadoop-0.20.2.bin.hadoop
+Caused by: java.lang.ClassNotFoundException: fs~.hadoop-0.20.2.bin.hadoop
+[mirask@cssmpi24h all]$ ~/hadoop-0.20.2/bin/hadoop fs -rmr /user/mirask/input/ 
+Deleted hdfs://cssmpi24h.uwb.edu:28000/user/mirask/input
+[mirask@cssmpi24h all]$ ~/hadoop-0.20.2/bin/hadoop fs -put /home/NETID/mirask/mass_java_appl/Applications/RangeSearch/MapReduce/input/points1mil.txt /user/$USER/input
+[mirask@cssmpi24h all]$ mapreduce_run.sh 
+Deleted hdfs://cssmpi24h.uwb.edu:28000/user/mirask/output
+Note: KDTree.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+added manifest
+adding: KDTreeRangeSearchMapReduce.class(in = 2487) (out= 1273)(deflated 48%)
+adding: KDTreeRangeSearchMapReduce$KDTreeRangeSearchMapper.class(in = 2492) (out= 972)(deflated 60%)
+adding: KDTreeRangeSearchMapReduce$KDTreeRangeSearchReducer.class(in = 3094) (out= 1313)(deflated 57%)
+adding: KDTree.class(in = 2030) (out= 1140)(deflated 43%)
+adding: KDTree$DimensionalComparator.class(in = 819) (out= 482)(deflated 41%)
+adding: KDTreeRangeSearchSeq.class(in = 3065) (out= 1774)(deflated 42%)
+adding: KDTreeRangeSearchSpark.class(in = 5322) (out= 2692)(deflated 49%)
+adding: PointKD.class(in = 1458) (out= 780)(deflated 46%)
+24/12/07 02:12:24 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+24/12/07 02:12:24 INFO input.FileInputFormat: Total input paths to process : 1
+24/12/07 02:12:24 INFO mapred.JobClient: Running job: job_202412070156_0008
+24/12/07 02:12:25 INFO mapred.JobClient:  map 0% reduce 0%
+24/12/07 02:12:34 INFO mapred.JobClient:  map 100% reduce 0%
+24/12/07 02:12:46 INFO mapred.JobClient:  map 100% reduce 100%
+24/12/07 02:12:54 INFO mapred.JobClient: Job complete: job_202412070156_0008
+24/12/07 02:12:54 INFO mapred.JobClient: Counters: 16
+24/12/07 02:12:54 INFO mapred.JobClient:   Map-Reduce Framework
+24/12/07 02:12:54 INFO mapred.JobClient:     Combine output records=0
+24/12/07 02:12:54 INFO mapred.JobClient:     Spilled Records=3000000
+24/12/07 02:12:54 INFO mapred.JobClient:     Reduce input records=1000000
+24/12/07 02:12:54 INFO mapred.JobClient:     Reduce output records=0
+24/12/07 02:12:54 INFO mapred.JobClient:     Map input records=1000000
+24/12/07 02:12:54 INFO mapred.JobClient:     Map output records=1000000
+24/12/07 02:12:54 INFO mapred.JobClient:     Map output bytes=19778669
+24/12/07 02:12:54 INFO mapred.JobClient:     Reduce shuffle bytes=0
+24/12/07 02:12:54 INFO mapred.JobClient:     Combine input records=0
+24/12/07 02:12:54 INFO mapred.JobClient:     Reduce input groups=1
+24/12/07 02:12:54 INFO mapred.JobClient:   FileSystemCounters
+24/12/07 02:12:54 INFO mapred.JobClient:     HDFS_BYTES_READ=13778669
+24/12/07 02:12:54 INFO mapred.JobClient:     FILE_BYTES_WRITTEN=65336075
+24/12/07 02:12:54 INFO mapred.JobClient:     FILE_BYTES_READ=43557368
+24/12/07 02:12:54 INFO mapred.JobClient:   Job Counters 
+24/12/07 02:12:54 INFO mapred.JobClient:     Launched map tasks=1
+24/12/07 02:12:54 INFO mapred.JobClient:     Launched reduce tasks=1
+24/12/07 02:12:54 INFO mapred.JobClient:     Data-local map tasks=1
+Final Project : Execution time: 30.584 seconds
+[mirask@cssmpi24h all]$ sequential_run.sh /home/NETID/mirask/mass_java_appl/Applications/RangeSearch/MapReduce/input/points1mil.txt 2 30,20 40,90
+Note: KDTree.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Collected range: 
+Final Project : Execution time: 6.335 seconds
+[mirask@cssmpi24h all]$ spark_run.sh spark://cssmpi24h.uwb.edu:58200 4 /home/NETID/mirask/mass_java_appl/Applications/RangeSearch/MapReduce/input/points1mil.txt 2 30,20 40,90
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+added manifest
+adding: KDTreeRangeSearchSpark.class(in = 5322) (out= 2692)(deflated 49%)
+adding: KDTree.class(in = 2012) (out= 1131)(deflated 43%)
+adding: KDTree$DimensionalComparator.class(in = 800) (out= 467)(deflated 41%)
+adding: KDTreeRangeSearchMapReduce.class(in = 2487) (out= 1273)(deflated 48%)
+adding: KDTreeRangeSearchMapReduce$KDTreeRangeSearchMapper.class(in = 2492) (out= 972)(deflated 60%)
+adding: KDTreeRangeSearchMapReduce$KDTreeRangeSearchReducer.class(in = 3094) (out= 1313)(deflated 57%)
+adding: KDTreeRangeSearchSeq.class(in = 3065) (out= 1774)(deflated 42%)
+adding: PointKD.class(in = 1131) (out= 643)(deflated 43%)
+2024-12-07 02:14:34 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2024-12-07 02:14:34 INFO  SparkContext:54 - Running Spark version 2.3.1
+2024-12-07 02:14:34 INFO  SparkContext:54 - Submitted application: Final Project : Range search /home/NETID/mirask/mass_java_appl/Applications/RangeSearch/MapReduce/input/points1mil.txt btwn 30,20 40,90
+2024-12-07 02:14:34 INFO  SecurityManager:54 - Changing view acls to: mirask
+2024-12-07 02:14:34 INFO  SecurityManager:54 - Changing modify acls to: mirask
+2024-12-07 02:14:34 INFO  SecurityManager:54 - Changing view acls groups to: 
+2024-12-07 02:14:34 INFO  SecurityManager:54 - Changing modify acls groups to: 
+2024-12-07 02:14:34 INFO  SecurityManager:54 - SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(mirask); groups with view permissions: Set(); users  with modify permissions: Set(mirask); groups with modify permissions: Set()
+2024-12-07 02:14:35 INFO  Utils:54 - Successfully started service 'sparkDriver' on port 37164.
+2024-12-07 02:14:35 INFO  SparkEnv:54 - Registering MapOutputTracker
+2024-12-07 02:14:35 INFO  SparkEnv:54 - Registering BlockManagerMaster
+2024-12-07 02:14:35 INFO  BlockManagerMasterEndpoint:54 - Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2024-12-07 02:14:35 INFO  BlockManagerMasterEndpoint:54 - BlockManagerMasterEndpoint up
+2024-12-07 02:14:35 INFO  DiskBlockManager:54 - Created local directory at /tmp/blockmgr-aecfd41e-5f47-4c30-91c4-b58289aa853e
+2024-12-07 02:14:35 INFO  MemoryStore:54 - MemoryStore started with capacity 366.3 MB
+2024-12-07 02:14:35 INFO  SparkEnv:54 - Registering OutputCommitCoordinator
+2024-12-07 02:14:35 INFO  log:192 - Logging initialized @1287ms
+2024-12-07 02:14:35 INFO  Server:346 - jetty-9.3.z-SNAPSHOT
+2024-12-07 02:14:35 INFO  Server:414 - Started @1347ms
+2024-12-07 02:14:35 INFO  AbstractConnector:278 - Started ServerConnector@10027fc9{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2024-12-07 02:14:35 INFO  Utils:54 - Successfully started service 'SparkUI' on port 4040.
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@324c64cd{/jobs,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@e3cee7b{/jobs/json,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@71e9a896{/jobs/job,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@408b35bf{/jobs/job/json,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@29ad44e3{/stages,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@15bcf458{/stages/json,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@5af9926a{/stages/stage,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@726386ed{/stages/stage/json,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@649f2009{/stages/pool,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@14bb2297{/stages/pool/json,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@69adf72c{/storage,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@797501a{/storage/json,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@1a15b789{/storage/rdd,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@57f791c6{/storage/rdd/json,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@51650883{/environment,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@6c4f9535{/environment/json,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@5bd1ceca{/executors,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@30c31dd7{/executors/json,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@499b2a5c{/executors/threadDump,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@596df867{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@c1fca1e{/static,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@2ef8a8c3{/,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@24f43aa3{/api,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@70e0accd{/jobs/job/kill,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@7957dc72{/stages/stage/kill,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  SparkUI:54 - Bound SparkUI to 0.0.0.0, and started at http://cssmpi24h.uwb.edu:4040
+2024-12-07 02:14:35 INFO  SparkContext:54 - Added JAR file:/home/NETID/mirask/prog5/all/KDTreeRangeSearchSpark.jar at spark://cssmpi24h.uwb.edu:37164/jars/KDTreeRangeSearchSpark.jar with timestamp 1733566475331
+2024-12-07 02:14:35 INFO  StandaloneAppClient$ClientEndpoint:54 - Connecting to master spark://cssmpi24h.uwb.edu:58200...
+2024-12-07 02:14:35 INFO  TransportClientFactory:267 - Successfully created connection to cssmpi24h.uwb.edu/10.158.82.168:58200 after 39 ms (0 ms spent in bootstraps)
+2024-12-07 02:14:35 INFO  StandaloneSchedulerBackend:54 - Connected to Spark cluster with app ID app-20241207021435-0021
+2024-12-07 02:14:35 INFO  Utils:54 - Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 36344.
+2024-12-07 02:14:35 INFO  NettyBlockTransferService:54 - Server created on cssmpi24h.uwb.edu:36344
+2024-12-07 02:14:35 INFO  BlockManager:54 - Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2024-12-07 02:14:35 INFO  BlockManagerMaster:54 - Registering BlockManager BlockManagerId(driver, cssmpi24h.uwb.edu, 36344, None)
+2024-12-07 02:14:35 INFO  BlockManagerMasterEndpoint:54 - Registering block manager cssmpi24h.uwb.edu:36344 with 366.3 MB RAM, BlockManagerId(driver, cssmpi24h.uwb.edu, 36344, None)
+2024-12-07 02:14:35 INFO  StandaloneAppClient$ClientEndpoint:54 - Executor added: app-20241207021435-0021/0 on worker-20241207000210-10.158.82.168-39536 (10.158.82.168:39536) with 1 core(s)
+2024-12-07 02:14:35 INFO  StandaloneSchedulerBackend:54 - Granted executor ID app-20241207021435-0021/0 on hostPort 10.158.82.168:39536 with 1 core(s), 1024.0 MB RAM
+2024-12-07 02:14:35 INFO  StandaloneAppClient$ClientEndpoint:54 - Executor added: app-20241207021435-0021/1 on worker-20241207000210-10.158.82.167-34967 (10.158.82.167:34967) with 1 core(s)
+2024-12-07 02:14:35 INFO  StandaloneSchedulerBackend:54 - Granted executor ID app-20241207021435-0021/1 on hostPort 10.158.82.167:34967 with 1 core(s), 1024.0 MB RAM
+2024-12-07 02:14:35 INFO  StandaloneAppClient$ClientEndpoint:54 - Executor added: app-20241207021435-0021/2 on worker-20241207000210-10.158.82.165-37010 (10.158.82.165:37010) with 1 core(s)
+2024-12-07 02:14:35 INFO  StandaloneSchedulerBackend:54 - Granted executor ID app-20241207021435-0021/2 on hostPort 10.158.82.165:37010 with 1 core(s), 1024.0 MB RAM
+2024-12-07 02:14:35 INFO  StandaloneAppClient$ClientEndpoint:54 - Executor added: app-20241207021435-0021/3 on worker-20241207000210-10.158.82.166-41178 (10.158.82.166:41178) with 1 core(s)
+2024-12-07 02:14:35 INFO  StandaloneSchedulerBackend:54 - Granted executor ID app-20241207021435-0021/3 on hostPort 10.158.82.166:41178 with 1 core(s), 1024.0 MB RAM
+2024-12-07 02:14:35 INFO  BlockManagerMaster:54 - Registered BlockManager BlockManagerId(driver, cssmpi24h.uwb.edu, 36344, None)
+2024-12-07 02:14:35 INFO  BlockManager:54 - Initialized BlockManager: BlockManagerId(driver, cssmpi24h.uwb.edu, 36344, None)
+2024-12-07 02:14:35 INFO  StandaloneAppClient$ClientEndpoint:54 - Executor updated: app-20241207021435-0021/3 is now RUNNING
+2024-12-07 02:14:35 INFO  StandaloneAppClient$ClientEndpoint:54 - Executor updated: app-20241207021435-0021/2 is now RUNNING
+2024-12-07 02:14:35 INFO  StandaloneAppClient$ClientEndpoint:54 - Executor updated: app-20241207021435-0021/1 is now RUNNING
+2024-12-07 02:14:35 INFO  StandaloneAppClient$ClientEndpoint:54 - Executor updated: app-20241207021435-0021/0 is now RUNNING
+2024-12-07 02:14:35 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@2e52fb3e{/metrics/json,null,AVAILABLE,@Spark}
+2024-12-07 02:14:35 INFO  StandaloneSchedulerBackend:54 - SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+Final Project : start time: 1733566475896
+2024-12-07 02:14:36 INFO  MemoryStore:54 - Block broadcast_0 stored as values in memory (estimated size 236.7 KB, free 366.1 MB)
+2024-12-07 02:14:36 INFO  MemoryStore:54 - Block broadcast_0_piece0 stored as bytes in memory (estimated size 22.9 KB, free 366.0 MB)
+2024-12-07 02:14:36 INFO  BlockManagerInfo:54 - Added broadcast_0_piece0 in memory on cssmpi24h.uwb.edu:36344 (size: 22.9 KB, free: 366.3 MB)
+2024-12-07 02:14:36 INFO  SparkContext:54 - Created broadcast 0 from textFile at KDTreeRangeSearchSpark.java:39
+2024-12-07 02:14:36 INFO  FileInputFormat:249 - Total input paths to process : 1
+2024-12-07 02:14:36 INFO  SparkContext:54 - Starting job: collect at KDTreeRangeSearchSpark.java:61
+2024-12-07 02:14:36 INFO  DAGScheduler:54 - Got job 0 (collect at KDTreeRangeSearchSpark.java:61) with 2 output partitions
+2024-12-07 02:14:36 INFO  DAGScheduler:54 - Final stage: ResultStage 0 (collect at KDTreeRangeSearchSpark.java:61)
+2024-12-07 02:14:36 INFO  DAGScheduler:54 - Parents of final stage: List()
+2024-12-07 02:14:36 INFO  DAGScheduler:54 - Missing parents: List()
+2024-12-07 02:14:36 INFO  DAGScheduler:54 - Submitting ResultStage 0 (MapPartitionsRDD[3] at mapPartitions at KDTreeRangeSearchSpark.java:47), which has no missing parents
+2024-12-07 02:14:36 INFO  MemoryStore:54 - Block broadcast_1 stored as values in memory (estimated size 5.3 KB, free 366.0 MB)
+2024-12-07 02:14:36 INFO  MemoryStore:54 - Block broadcast_1_piece0 stored as bytes in memory (estimated size 3.0 KB, free 366.0 MB)
+2024-12-07 02:14:36 INFO  BlockManagerInfo:54 - Added broadcast_1_piece0 in memory on cssmpi24h.uwb.edu:36344 (size: 3.0 KB, free: 366.3 MB)
+2024-12-07 02:14:36 INFO  SparkContext:54 - Created broadcast 1 from broadcast at DAGScheduler.scala:1039
+2024-12-07 02:14:36 INFO  DAGScheduler:54 - Submitting 2 missing tasks from ResultStage 0 (MapPartitionsRDD[3] at mapPartitions at KDTreeRangeSearchSpark.java:47) (first 15 tasks are for partitions Vector(0, 1))
+2024-12-07 02:14:36 INFO  TaskSchedulerImpl:54 - Adding task set 0.0 with 2 tasks
+2024-12-07 02:14:37 INFO  CoarseGrainedSchedulerBackend$DriverEndpoint:54 - Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.158.82.168:45916) with ID 0
+2024-12-07 02:14:37 INFO  TaskSetManager:54 - Starting task 0.0 in stage 0.0 (TID 0, 10.158.82.168, executor 0, partition 0, PROCESS_LOCAL, 7945 bytes)
+2024-12-07 02:14:37 INFO  BlockManagerMasterEndpoint:54 - Registering block manager 10.158.82.168:40559 with 366.3 MB RAM, BlockManagerId(0, 10.158.82.168, 40559, None)
+2024-12-07 02:14:38 INFO  BlockManagerInfo:54 - Added broadcast_1_piece0 in memory on 10.158.82.168:40559 (size: 3.0 KB, free: 366.3 MB)
+2024-12-07 02:14:38 INFO  BlockManagerInfo:54 - Added broadcast_0_piece0 in memory on 10.158.82.168:40559 (size: 22.9 KB, free: 366.3 MB)
+2024-12-07 02:14:41 INFO  TaskSetManager:54 - Starting task 1.0 in stage 0.0 (TID 1, 10.158.82.168, executor 0, partition 1, PROCESS_LOCAL, 7945 bytes)
+2024-12-07 02:14:41 INFO  TaskSetManager:54 - Finished task 0.0 in stage 0.0 (TID 0) in 3311 ms on 10.158.82.168 (executor 0) (1/2)
+2024-12-07 02:14:43 INFO  TaskSetManager:54 - Finished task 1.0 in stage 0.0 (TID 1) in 2234 ms on 10.158.82.168 (executor 0) (2/2)
+2024-12-07 02:14:43 INFO  TaskSchedulerImpl:54 - Removed TaskSet 0.0, whose tasks have all completed, from pool 
+2024-12-07 02:14:43 INFO  DAGScheduler:54 - ResultStage 0 (collect at KDTreeRangeSearchSpark.java:61) finished in 6.426 s
+2024-12-07 02:14:43 INFO  DAGScheduler:54 - Job 0 finished: collect at KDTreeRangeSearchSpark.java:61, took 6.461360 s
+Collected range: 
+Result saved in outputSpark.txt
+Final Project : Execution time: 7.421 seconds
+2024-12-07 02:14:43 INFO  SparkContext:54 - Invoking stop() from shutdown hook
+2024-12-07 02:14:43 INFO  AbstractConnector:318 - Stopped Spark@10027fc9{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2024-12-07 02:14:43 INFO  SparkUI:54 - Stopped Spark web UI at http://cssmpi24h.uwb.edu:4040
+2024-12-07 02:14:43 INFO  StandaloneSchedulerBackend:54 - Shutting down all executors
+2024-12-07 02:14:43 INFO  CoarseGrainedSchedulerBackend$DriverEndpoint:54 - Asking each executor to shut down
+2024-12-07 02:14:43 INFO  MapOutputTrackerMasterEndpoint:54 - MapOutputTrackerMasterEndpoint stopped!
+2024-12-07 02:14:43 INFO  MemoryStore:54 - MemoryStore cleared
+2024-12-07 02:14:43 INFO  BlockManager:54 - BlockManager stopped
+2024-12-07 02:14:43 INFO  BlockManagerMaster:54 - BlockManagerMaster stopped
+2024-12-07 02:14:43 INFO  OutputCommitCoordinator$OutputCommitCoordinatorEndpoint:54 - OutputCommitCoordinator stopped!
+2024-12-07 02:14:43 INFO  SparkContext:54 - Successfully stopped SparkContext
+2024-12-07 02:14:43 INFO  ShutdownHookManager:54 - Shutdown hook called
+2024-12-07 02:14:43 INFO  ShutdownHookManager:54 - Deleting directory /tmp/spark-d650bd92-f8fb-47b8-8b77-8b514b1a4fbf
+2024-12-07 02:14:43 INFO  ShutdownHookManager:54 - Deleting directory /tmp/spark-ff4970f1-614c-466b-b076-9e99068d709f
