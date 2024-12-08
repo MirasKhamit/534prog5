@@ -1,31 +1,50 @@
+package edu.uw.bothell.css.dsl.mass.apps.RangeSearch;
 
+import edu.uw.bothell.css.dsl.MASS.VertexPlace;
 import java.io.Serializable;
+import java.util.*;
 
-public class PointKD implements Serializable{
-        public Double[] point;
-        PointKD left,right;
-        PointKD(String[] parsedPoints){
-            point = new Double[parsedPoints.length];
-            for(int i=0;i<parsedPoints.length;i++){
-                point[i]=Double.parseDouble(parsedPoints[i]);
+// Point2D is class for working two dimensional point data.
+public class PointKD implements Serializable {
+    public static final long serialVersionUID = 12962345938L;
+    public double[] coordinates;
+
+    public PointKD(double[] coordinates) {
+        this.coordinates = coordinates.clone();
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(this.coordinates);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.toString().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof PointKD) {
+            PointKD otherPoint = (PointKD) o;
+            double[] inputArray = otherPoint.coordinates;
+
+            // Check if the arrays are of the same length
+            if (this.coordinates.length != inputArray.length) {
+                return false;
             }
-            this.left = this.right = null;
-        }
 
-        PointKD(Double[] parsedPoints){
-            this.point = parsedPoints;
-            this.left = this.right = null;
-        }
-        @Override
-        public String toString() {
-            String vertexList ="(";
-            for (int i = 0; i < point.length; i++) {
-                vertexList += point[i];
-                if (i < point.length - 1) {
-                    vertexList += ", ";
+            // Compare each element of the two arrays
+            for (int i = 0; i < this.coordinates.length; i++) {
+                if (this.coordinates[i]!=inputArray[i]) {
+                    return false;
                 }
             }
-            vertexList += ")";
-            return vertexList;
+
+            // All elements are equal
+            return true;
         }
+        return false;
     }
+
+}
