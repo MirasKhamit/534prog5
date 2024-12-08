@@ -13,105 +13,88 @@
 #include "mpi.h"
 using namespace std;
 
-// k-dimensional point
-struct Point
-{
-    int index;
-    std::vector<double> coords;
-    // Point(std::initializer_list<double> init) : coords(init) {}
-    Point(const int iinit, const std::vector<double> &cinit)
-    {
-        index = iinit;
-        coords = cinit;
-    }
-};
-
-// function to sort points by dimension
-struct PointComparator 
-{
-    int dimension;
-    bool operator()(const Point &a, const Point &b) const {
-        return a.coords[dimension] < b.coords[dimension];
-    }
-};
-
-// k-d tree node
-struct Node
-{
-    Point point;
-    Node *left;
-    Node *right;
-    Node(Point p) : point(p), left(NULL), right(NULL) {}
-};
-
-// k-d tree
-class KDTree
-{
+// K-D tree
+template <typename T>
+class KDTree {
 public:
+    struct Point {
+        int index;
+        vector<T> coords;
+    };
+
     // constructor
-    KDTree(const std::vector<Point> &points)
-    {
-        root = build(points, 0);
+    KDTree() : root(NULL) {}
+
+    // insert a point into the tree
+    void insert(const Point& point) {
+        root = insertRecursive(root, 0, point);
     }
 
-    // public range search
-    std::vector<Point> rangeSearch(const Point &lower, const Point &upper)
-    {
+    // run a range search
+    std::vector<Point> rangeSearch(const Point& min, const Point& max) const {
         std::vector<Point> result;
-        rangeSearch(root, lower, upper, 0, result);
+        rangeSearchRecursive(root, 0, min, max, result);
         return result;
     }
 
 private:
-    Node *root; // tree root
+    struct Node {
+        Point point;
+        Node* left;
+        Node* right;
 
-    // build tree
-    Node *build(std::vector<Point> points, int depth)
-    {
-        if (points.empty())
-            return NULL;
-        PointComparator comparator = PointComparator();
-        comparator.dimension =  depth % points[0].coords.size();
-        std::sort(points.begin(), points.end(), comparator);
-        int median = points.size() / 2;
-        Node *node = new Node(points[median]);
-        std::vector<Point> leftPoints(points.begin(), points.begin() + median);
-        std::vector<Point> rightPoints(points.begin() + median + 1, points.end());
-        node->left = build(leftPoints, depth + 1);
-        node->right = build(rightPoints, depth + 1);
+        Node(const Point& p) : point(p), left(NULL), right(NULL) {}
+    };
+
+    Node* root;
+
+    // recursive function to insert a point into the K-D Tree
+    Node* insertRecursive(Node* node, int depth, const Point& point) {
+        if (node == NULL) {
+            return new Node(point);
+        }
+
+        int cd = depth % point.coords.size();
+        if (point.coords[cd] < node->point.coords[cd]) {
+            node->left = insertRecursive(node->left, depth + 1, point);
+        } else {
+            node->right = insertRecursive(node->right, depth + 1, point);
+        }
+
         return node;
     }
 
-    // private rangeSearch
-    void rangeSearch(Node *node, const Point &lower, const Point &upper, int depth, std::vector<Point> &result)
-    {
-        // check if null
-        if (!node)
+    // recursive function to run a range search
+    void rangeSearchRecursive(Node* node, int depth, const Point& min, const Point& max, std::vector<Point>& result) const {
+        if (node == NULL) {
             return;
-        
-        // check if node is outside range
-        bool inside = true;
-        for (size_t i = 0; i < lower.coords.size(); ++i)
-        {
-            if (node->point.coords[i] < lower.coords[i] || node->point.coords[i] > upper.coords[i])
-            {
-                inside = false;
-                break;
+        }
+
+        // check if node within range
+        int cd = depth % min.coords.size();
+        if (node->point.coords[cd] >= min.coords[cd] && node->point.coords[cd] <= max.coords[cd]) {
+            bool inRange = true;
+            for (int i = 0; i < min.coords.size(); ++i) {
+                if (node->point.coords[i] < min.coords[i] || node->point.coords[i] > max.coords[i]) {
+                    inRange = false;
+                    break;
+                }
+            }
+            // add to results if within range
+            if (inRange) {
+                result.push_back(node->point);
             }
         }
 
-        // if within range add point to results
-        if (inside)
-            result.push_back(node->point);
-        int dimension = depth % lower.coords.size(); // get dimension
+        // if greater than min, traverse left
+        if (min.coords[cd] < node->point.coords[cd]) {
+            rangeSearchRecursive(node->left, depth + 1, min, max, result);
+        }
 
-        // if lower bounds less than node dimension, rangeSearch left
-        if (lower.coords[dimension] <= node->point.coords[dimension])
-            rangeSearch(node->left, lower, upper, depth + 1, result);
-
-        // if upper bounds greater than node dimension, rangeSearch right
-        if (upper.coords[dimension] >= node->point.coords[dimension])
-            rangeSearch(node->right, lower, upper, depth + 1, result);
+        // if less than max, traverse right
+        if (max.coords[cd] > node->point.coords[cd]) {
+            rangeSearchRecursive(node->right, depth + 1, min, max, result);
+        }
     }
 };
 
@@ -145,8 +128,9 @@ vector<double> readInputFile(string path)
 }
 
 // read bound
-Point readBound(string bound)
+KDTree<double>::Point readBound(string bound)
 {
+    KDTree<double>::Point p;
     stringstream ssb(bound);
     vector<double> bcoords;
     string temp;
@@ -158,7 +142,9 @@ Point readBound(string bound)
         ss >> num;;
         bcoords.push_back(num);
     }
-    return Point(-1, bcoords);
+    p.index = -1;
+    p.coords = bcoords;
+    return p;
 }
 
 // application process entry-point
@@ -180,15 +166,12 @@ int main(int argc, char *argv[])
     vector<double> coords = readInputFile(fPath);
 
     // copy coordinate vector to array
-    double data[coords.size()];
-    //double* data = new double[coords.size()];
+    double* data = new double[coords.size()];
     std::copy(coords.begin(), coords.end(), data);
 
-    //cout << "Test: " << data[1] << endl;
-
     // read bounds 
-    Point lower = readBound(lowerb);
-    Point upper = readBound(upperb);
+    KDTree<double>::Point lower = readBound(lowerb);
+    KDTree<double>::Point upper = readBound(upperb);
 
     // start timer
     Timer time;
@@ -210,10 +193,8 @@ int main(int argc, char *argv[])
     double local[rangeSize];
     MPI_Scatter(data, rangeSize, MPI_DOUBLE, local, rangeSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
-    //cout << "Test local: " << local[1] << endl;
-
     // build tree
-    vector<Point> points;
+    KDTree<double> tree;
     for(int i = 0; i < rangeSize; i+=dimensions)
     {
         vector<double> pointCoords;
@@ -221,14 +202,14 @@ int main(int argc, char *argv[])
         {
             pointCoords.push_back(local[i + j]);
         }
-        points.push_back(Point(i, pointCoords));
+        KDTree<double>::Point p;
+        p.index = i;
+        p.coords = pointCoords;
+        tree.insert(p);
     }
-    KDTree tree(points);
 
     // run range search
-    vector<Point> results = tree.rangeSearch(lower, upper);
-
-    cout << "Results: " << results.size() << endl;
+    vector<KDTree<double>::Point> results = tree.rangeSearch(lower, upper);
 
     // assign results back to local array
     std::fill(local, local + rangeSize, -1.0);
@@ -243,33 +224,34 @@ int main(int argc, char *argv[])
 
     // output from rank 0
     if(my_rank == 0)
-    {    
-        //cout << "Test: " << data[0] << endl;
-        
+    {            
         // print results
         cout << "Results: ";
+        int resultTotal = 0;
         
-        for (int i = 0; i < sizeof(data) / sizeof(double); i++)
+        for (int i = 0; i < coords.size(); i++)
         {
             if (data[i] >= 0)
             {
                 // check if line begin
                 if (i % dimensions == 0)
                 {
-                    cout << endl;
-                    cout << "Point: ";
+                    //cout << endl;
+                    //cout << "Point: ";
                 }
                 std::ostringstream sstream;
                 sstream << data[i];
                 std::string sCoord = sstream.str();
                 // check if line end
                 string output = i % dimensions == dimensions - 1 ? sCoord : sCoord +  + ", ";
-                cout << output;
+                //cout << output;
+                resultTotal++;
             }
         }
         cout << endl;
 
         // print time
+        cout << "Result total: " << resultTotal / dimensions << endl;
         cout << "Execution time: " << time.lap() << endl;
     }
 
