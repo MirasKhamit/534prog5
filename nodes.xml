@@ -1,0 +1,40 @@
+
+<nodes>
+
+<node>
+
+<master>true</master>
+
+<!-- Hostname is required, and may either be an FQDN or IP address -->
+
+<!-- Make sure the name/address specified is reachable by all other nodes -->
+
+<hostname>cssmpi21h.uwb.edu</hostname>
+
+<!-- Masshome is where MASS.jar and any other dependencies of your application reside -->
+
+<masshome>/home/NETID/cmathi27/mass_java_appl/Graphs/Laboratory5/target</masshome>
+
+<username>cmathi27</username>
+
+<privatekey>/home/NETID/cmathi27/.ssh/id_rsa</privatekey>
+
+<port>58019</port>
+
+</node>
+
+<node>
+
+<hostname>cssmpi11h.uwb.edu</hostname>
+
+<masshome>/home/NETID/cmathi27/mass_java_appl/Graphs/Laboratory5/target</masshome>
+
+<username>cmathi27</username>
+
+<privatekey>/home/NETID/cmathi27/.ssh/id_rsa</privatekey>
+
+<port>58019</port>
+
+</node>
+
+</nodes>

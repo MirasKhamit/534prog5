@@ -48,7 +48,7 @@ public class KDTree extends GraphPlaces {
             this.root = this.addVertexWithParams(p);
 
             //Commented as a part of automated Agent migration by Vishnu
-            //this.agent = new Agents(1, KDAgent.class.getName(), new int[]{-1, -1, 0}, this, 1);
+            //this.agent = new Agents(1, UpdateAgent.class.getName(), new int[]{-1, -1, 0}, this, 1);
             System.out.println("Constructing root of tree with point : ( " + Arrays.toString(p.coordinates)+" ) ROOT "+this.root+" value "+getVertex(this.root).point);
             MASS.getLogger().debug("Constructing root of tree with point : ( " + Arrays.toString(p.coordinates)+" )");
             return;
@@ -104,8 +104,9 @@ public class KDTree extends GraphPlaces {
                 }
             }
 
+            //Commented as a part of automated Agent migration by Vishnu
             // Migrate agent to the root node and update its left/right fields.
-            //this.agent.callAll(KDAgent.update_, new int[]{root.left, root.right, rootID});
+            //this.agent.callAll(UpdateAgent.update_, new int[]{root.left, root.right, rootID});
             //this.agent.manageAll();
 
             return;

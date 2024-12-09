@@ -35,7 +35,6 @@ public class KDTreeRangeSearch {
 
         // Init MASS
         MASS.setLoggingLevel(LogLevel.DEBUG);
-        
 
         /* ---------------------- KDTree Construction ---------------------- */
         long kdStart = System.currentTimeMillis();
@@ -56,7 +55,7 @@ public class KDTreeRangeSearch {
         long rsStart = System.currentTimeMillis();
         Object[] arg = {range, 0};
         SmartArgs2Agents arguments = new SmartArgs2Agents(SmartArgs2Agents.rangeSearch_, arg, -1, -1);
-        Agents agents = new Agents(1, KDAgent.class.getName(), arguments, kdTree, points.size());
+        Agents agents = new Agents(1, UpdateAgent.class.getName(), arguments, kdTree, points.size());
         // Agents crawlers = new Agents(sequentialId++, CrawlerGraphMASS.class.getName(), null, network, nVertices);
 
         System.out.println("Agents Created ...");
@@ -64,33 +63,20 @@ public class KDTreeRangeSearch {
         int stepcount = 0;
 
         while (true) {
-            //  Graph graph = tree;
-
-        // List<VertexModel> vertices = tree.getGraph().getVertices();
-
-        // int nVertices = vertices.size();
-
-        // System.out.println("Number of Vertices is : " + nVertices);
-
-        // try {
-
-        //     network.callAll(NodeGraphMASS.init_);
-
-        //     // network.callAll(NodeGraphMASS.display_);
-
-        //     // Time measurement starts
-        //     System.out.println("Go! Graph");
-        //     long startTime = System.currentTimeMillis();
-
-        //     // Instantiate an agent at each node
-        //     Agents crawlers = new Agents(sequentialId++, CrawlerGraphMASS.class.getName(), null, network, nVertices);
             Object[] argArrays = {range};
-            Vertex[] resultTemp = Arrays.stream((Object[]) agents.callAll(KDAgent.DoSearch_, null))
-                                        .filter(Objects::nonNull)
-                                        .map(o -> (Vertex) o)
-                                        .toArray(Vertex[]::new);
+            Object[] respReceived = (Object[])agents.callAll(UpdateAgent.DoSearch_, null);
+            System.out.println(" Results Vertexes : " + Arrays.toString(respReceived));
+            
+            for (Object result : respReceived) {
+                if (result instanceof Vertex[]) {
+                    Vertex[] vertexArray = (Vertex[]) result;
+                    // Add all elements of the array to the results list
+                    Collections.addAll(results, vertexArray);
+                } else {
+                    System.err.println("Unexpected type in callResults: " + result.getClass());
+                }
+            }
 
-            Collections.addAll(results, resultTemp);
             agents.manageAll();
 
             System.out.println("Step: " + stepcount + ", Results: " + results);
@@ -101,8 +87,6 @@ public class KDTreeRangeSearch {
             }
 
         long rsEnd = System.currentTimeMillis();
-
-        System.out.println("Results: " + results);
 
         System.out.println("KD-Tree Construction Time (ms): " + (kdEnd - kdStart));
         System.out.println("RangeSearch Exec Time (ms): " + (rsEnd - rsStart));
